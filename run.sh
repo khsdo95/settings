@@ -10,7 +10,7 @@ dpkg --add-architecture i386
 apt-get update
 
 ## Do apt-get
-apt-get install -y openssh-server vim zsh neovim curl tmux net-tools	\
+apt-get install -y openssh-server vim zsh curl tmux net-tools	\
 	libc6:i386 libncurses5:i386 libstdc++6:i386 gcc-6-multilib	\
 	python-dev python-pip python3-pip libssl-dev libffi-dev build-essential
 
@@ -53,6 +53,16 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 apt update && apt install yarn
 
 ## vim configure
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage  \
+  -o /usr/local/bin/nvim.appimage
+chmod +x /usr/local/bin/nvim.appimage
+CUSTOM_NVIM_PATH=/usr/local/bin/nvim.appimage
+set -u
+update-alternatives --install /usr/bin/ex ex "${CUSTOM_NVIM_PATH}" 110
+update-alternatives --install /usr/bin/vi vi "${CUSTOM_NVIM_PATH}" 110
+update-alternatives --install /usr/bin/view view "${CUSTOM_NVIM_PATH}" 110
+update-alternatives --install /usr/bin/vim vim "${CUSTOM_NVIM_PATH}" 110
+update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
 mkdir -p ~/.local/share/nvim/site
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
