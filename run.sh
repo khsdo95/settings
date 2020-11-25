@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ## Change apt src
-cp /etc/apt/source.list /etc/apt/source.list.bak
-cp ./source.list /etc/apt/source.list
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+cp ./sources.list /etc/apt/sources.list
 apt-get update
 
 ## Add arch
