@@ -9,8 +9,8 @@ set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 set nocindent
 set et
 set modeline
+
 au BufWritePost,BufFilePost solve.py call system("chmod +x ".expand("%"))
-let hi = 'tt'
 autocmd BufNewFile solve.py 0put =
 \\"#!/usr/bin/python\<nl>
 \from pwn import *
@@ -34,4 +34,5 @@ autocmd BufNewFile solve.py 0put =
 \    p.send(st)\<nl>
 \\"|$
 
-set tags=/root/test/tags
+call plug#begin('~/.vim/plugged')
+call plug#end()
