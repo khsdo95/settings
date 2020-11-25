@@ -10,8 +10,9 @@ dpkg --add-architecture i386
 apt-get update
 
 ## Do apt-get
-apt-get install -y openssh-server vim zsh neovim python-pip python3-pip curl tmux bat	\
+apt-get install -y openssh-server vim zsh neovim curl tmux net-tools	\
 	libc6:i386 libncurses5:i386 libstdc++6:i386 gcc-6-multilib	\
+	python-dev python-pip python3-pip libssl-dev libffi-dev build-essential
 
 ## zsh plugins
 chsh -s /bin/zsh
@@ -38,8 +39,14 @@ mkdir -p ~/.gdbtools
 git clone https://github.com/longld/peda.git ~/.gdbtools/peda
 git clone https://github.com/scwuaptx/Pwngdb.git ~/.gdbtools/Pwngdb
 
+## python packages
+pip install --upgrade pip
+pip install --upgrade pwntools
+pip3 install --upgrade pip
+pip3 install --upgrade pwntools
+
 ## Copy config files
-cp ~/.gdbtools/Pwngdb/.gdbinit ~/
+cp ./.gdbinit ~/
 cp ./.vimrc ~/
 cp ./.tmux.conf ~/
 cp ./.zshrc ~/
