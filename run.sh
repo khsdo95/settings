@@ -46,19 +46,23 @@ pip3 install --upgrade pip
 pip3 install --upgrade pwntools
 
 ## install node&yarn
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | bash -
 apt-get install -y nodejs
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+apt update && apt install yarn
 
 ## vim configure
+mkdir -p ~/.local/share/nvim/site
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+chmod +rwx ~/.local/share/nvim/site/autoload
+mkdir -p ~/.config/nvim
 
 ## Copy config files
 cp ./.gdbinit ~/
-cp ./.vimrc ~/
+#cp ./.vimrc ~/
+cp ./init.vim ~/.config/nvim/
 cp ./.tmux.conf ~/
 cp ./.zshrc ~/
 

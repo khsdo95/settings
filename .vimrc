@@ -1,19 +1,3 @@
-call plug#begin('~/.vim/plugged')
-
-Plug 'tpope/vim-fugitive'
-Plug 'morhetz/gruvbox'
-Plug 'git://git.wincent.com/command-t.git'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'scrooloose/nerdtree'
-Plug 'bling/vim-airline'
-Plug 'tpope/vim-abolish'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'ronakg/quickr-cscope.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-call plug#end()
-
 filetype on
 syntax on
 set nu
