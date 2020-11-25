@@ -45,9 +45,24 @@ pip install --upgrade pwntools
 pip3 install --upgrade pip
 pip3 install --upgrade pwntools
 
+## install node&yarn
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+apt-get install -y nodejs
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+
+## vim configure
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 ## Copy config files
 cp ./.gdbinit ~/
 cp ./.vimrc ~/
 cp ./.tmux.conf ~/
 cp ./.zshrc ~/
 
+## Run vim
+nvim
+
+echo "Done!"
