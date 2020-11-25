@@ -53,8 +53,8 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 apt update && apt install yarn
 
 ## vim configure
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage  \
-  -o /usr/local/bin/nvim.appimage
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+mv ./nvim.appimage /usr/local/bin/
 chmod +x /usr/local/bin/nvim.appimage
 CUSTOM_NVIM_PATH=/usr/local/bin/nvim.appimage
 set -u
