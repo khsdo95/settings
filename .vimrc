@@ -1,3 +1,19 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-fugitive'
+Plug 'morhetz/gruvbox'
+Plug 'git://git.wincent.com/command-t.git'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plug 'scrooloose/nerdtree'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-abolish'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'ronakg/quickr-cscope.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+
 filetype on
 syntax on
 set nu
@@ -34,5 +50,13 @@ autocmd BufNewFile solve.py 0put =
 \    p.send(st)\<nl>
 \\"|$
 
-call plug#begin('~/.vim/plugged')
-call plug#end()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
