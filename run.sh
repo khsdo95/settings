@@ -17,7 +17,7 @@ apt-get install -y openssh-server vim zsh curl tmux net-tools	\
 ## zsh plugins
 chsh -s /bin/zsh
 mkdir -p ~/.zshtools
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.zshtools/fzf
 ~/.zshtools/fzf/install --all
 git clone https://github.com/clvv/fasd ~/.zshtools/fasd
@@ -77,6 +77,6 @@ cp ./.tmux.conf ~/
 cp ./.zshrc ~/
 
 ## Run vim
-nvim
+vi
 
 echo "Done!"
