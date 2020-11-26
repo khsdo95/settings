@@ -76,7 +76,10 @@ cp ./init.vim ~/.config/nvim/
 cp ./.tmux.conf ~/
 cp ./.zshrc ~/
 
-## Run vim
-vi
+## vim plugins
+vim +PlugInstall +qall
+
+## Change ownership
+chown -R mnur:mnur ~/.local/share/nvim
 
 echo "Done!"
