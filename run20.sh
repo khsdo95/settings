@@ -7,11 +7,11 @@ sed -i 's/kr.archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sed -i 's/security.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sed -i 's/us.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sed -i 's/us.archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
-apt-get update
+apt update
 
-## Do apt-get
-apt-get install -y openssh-server vim zsh curl tmux net-tools	neovim  \
-	python3-pip libssl-dev libffi-dev build-essential
+## Do apt
+apt install -y openssh-server vim zsh curl tmux net-tools	neovim  \
+	python3-pip libssl-dev libffi-dev build-essential bat fd-find  \
 
 ## zsh plugins
 mkdir -p ~/.zshtools
@@ -23,8 +23,6 @@ sh -c "cd ~/.zshtools/fasd; make install"
 wget https://github.com/knqyf263/pet/releases/download/v0.3.0/pet_0.3.0_linux_amd64.deb	\
 	-O ~/.zshtools/pet_0.3.0_linux_amd64.deb
 dpkg -i ~/.zshtools/pet_0.3.0_linux_amd64.deb
-apt install bat
-apt install fd-find
 
 ## gdb plugins
 mkdir -p ~/.gdbtools
@@ -37,10 +35,24 @@ pip3 install --upgrade pwntools
 
 ## install node&yarn
 curl -sL https://deb.nodesource.com/setup_14.x | bash -
-apt-get install -y nodejs
+apt install -y nodejs
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 apt update && apt install yarn
+
+## neovim
+CUSTOM_NVIM_PATH=/usr/bin/nvim
+set -u
+update-alternatives --install /usr/bin/ex ex "${CUSTOM_NVIM_PATH}" 110
+update-alternatives --install /usr/bin/vi vi "${CUSTOM_NVIM_PATH}" 110
+update-alternatives --install /usr/bin/view view "${CUSTOM_NVIM_PATH}" 110
+update-alternatives --install /usr/bin/vim vim "${CUSTOM_NVIM_PATH}" 110
+update-alternatives --install /usr/bin/vimdiff vimdiff "${CUSTOM_NVIM_PATH}" 110
+mkdir -p ~/.local/share/nvim/site
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+chmod +rwx ~/.local/share/nvim/site/autoload
+mkdir -p ~/.config/nvim
 
 ## Copy config files
 cp ./.gdbinit ~/
