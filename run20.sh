@@ -63,7 +63,7 @@ cp ./coc-settings.json ~/.config/nvim
 
 ## vim plugins
 snap install ccls --classic
-vim +PlugInstall +qall
+vim -es -c "PlugInstall"
 vim -es -c "CocInstall coc-json" -c "CocInstall coc-python"
 
 ## Change ownership
