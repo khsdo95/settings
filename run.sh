@@ -71,15 +71,17 @@ mkdir -p ~/.config/nvim
 
 ## Copy config files
 cp ./.gdbinit ~/
-#cp ./.vimrc ~/
 cp ./init.vim ~/.config/nvim/
 cp ./.tmux.conf ~/
 cp ./.zshrc ~/
+cp ./coc-settings.json ~/.config/nvim
 
 ## vim plugins
 vim +PlugInstall +qall
+vim -es -c "CocInstall coc-json" -c "CocInstall coc-python"
 
 ## Change ownership
-#chown -R mnur:mnur ~/.local/share/nvim
+#chown -R mnur:mnur ~/.local/share/
+#chown -R mnur:mnur ~/.config/
 
 echo "Done!"
