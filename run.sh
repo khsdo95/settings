@@ -80,6 +80,6 @@ cp ./.zshrc ~/
 vim +PlugInstall +qall
 
 ## Change ownership
-chown -R mnur:mnur ~/.local/share/nvim
+#chown -R mnur:mnur ~/.local/share/nvim
 
 echo "Done!"
