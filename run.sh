@@ -77,6 +77,7 @@ cp ./.zshrc ~/
 cp ./coc-settings.json ~/.config/nvim
 
 ## vim plugins
+snap install ccls
 vim +PlugInstall +qall
 vim -es -c "CocInstall coc-json" -c "CocInstall coc-python"
 
