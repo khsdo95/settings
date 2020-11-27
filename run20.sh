@@ -9,14 +9,9 @@ sed -i 's/us.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 sed -i 's/us.archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 apt-get update
 
-## Add arch
-dpkg --add-architecture i386
-apt-get update
-
 ## Do apt-get
 apt-get install -y openssh-server vim zsh curl tmux net-tools	neovim  \
-	libc6:i386 libncurses5:i386 libstdc++6:i386 gcc-6-multilib	\
-	python-dev python-pip python3-pip libssl-dev libffi-dev build-essential
+	python3-pip libssl-dev libffi-dev build-essential
 
 ## zsh plugins
 mkdir -p ~/.zshtools
@@ -55,7 +50,7 @@ cp ./.zshrc ~/
 cp ./coc-settings.json ~/.config/nvim
 
 ## vim plugins
-snap install ccls
+snap install ccls --classic
 vim +PlugInstall +qall
 vim -es -c "CocInstall coc-json" -c "CocInstall coc-python"
 
