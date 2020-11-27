@@ -19,7 +19,6 @@ apt-get install -y openssh-server vim zsh curl tmux net-tools	\
 	python-dev python-pip python3-pip libssl-dev libffi-dev build-essential
 
 ## zsh plugins
-chsh -s /bin/zsh
 mkdir -p ~/.zshtools
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.zshtools/fzf
@@ -86,7 +85,8 @@ vim +PlugInstall +qall
 vim -es -c "CocInstall coc-json" -c "CocInstall coc-python"
 
 ## Change ownership
-#chown -R mnur:mnur ~/.local/share/
-#chown -R mnur:mnur ~/.config/
+chown -R mnur:mnur ~/.local/share/
+chown -R mnur:mnur ~/.config/
+chsh -s /bin/zsh mnur
 
 echo "Done!"
