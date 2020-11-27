@@ -67,8 +67,8 @@ vim -es -c "PlugInstall"
 vim -es -c "CocInstall coc-json" -c "CocInstall coc-python"
 
 ## Change ownership
-chown -R mnur:mnur ~/.local/share/
-chown -R mnur:mnur ~/.config/
-chsh -s /bin/zsh mnur
+chown -R $1:$1 ~/.local/share/
+chown -R $1:$1 ~/.config/
+chsh -s /bin/zsh $1
 
 echo "Done!"
