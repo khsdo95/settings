@@ -12,6 +12,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'ronakg/quickr-cscope.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 call plug#end()
 
